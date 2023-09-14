@@ -1,0 +1,38 @@
+body {
+  
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+.heading
+{
+    font-weight:bold;
+    font-size:40px;
+    margin:10px;
+    //border:2px solid black;
+    font-family: 'Rubik', sans-serif;
+    text-align:center;
+    
+
+}
+
+
+.content
+{
+    font-size:21px;
+    text-align:center;
+    padding:10px;
+    //border:2px solid black; 
+    font-family: 'Rubik', sans-serif;
+}
+
+.image-container{
+  /* border:2px solid black; */
+  border-radius: 23% 31% 30% 67% / 72% 47% 40% 26%;
+  width: 600px;
+  height: auto;
+  background: linear-gradient(#a03692, #b46ca8, #c0aec5);
+  overflow: hidden;
+  animation: animateImg 8s linear infinite;
+  
+
+}
