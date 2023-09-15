@@ -66,6 +66,15 @@ app.get('/blogs/:id',async(req,res)=>
     return res.status(200).json(blogs);
 })
 
+app.get('/blogs',async(req,res)=>
+{
+    const id=req.params.id;
+
+    const blogs=await Blog.find({}).populate("userId")
+
+    return res.status(200).json(blogs);
+})
+
 app.put('/update/:id',async(req,res)=>
 {
     const id=req.params.id;
@@ -75,6 +84,15 @@ app.put('/update/:id',async(req,res)=>
     console.log(blogs);
 
     return res.status(200).json(blogs);
+})
+
+app.delete('/delete/:id',async(req,res)=>
+{
+    const id=req.params.id;
+
+    const blogs=await Blog.findByIdAndDelete(id);
+
+    return res.status(200).json("The post has been deleted");
 })
 
 module.exports=app;

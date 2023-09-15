@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
     <div>
      
-<footer class="bg-white dark:bg-gray-900">
+<footer class="bg-white dark:bg-gray-900" style={{marginTop:'50%'}}>
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
@@ -18,10 +19,10 @@ function Footer() {
                   <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
                   <ul class="text-gray-500 dark:text-gray-400 font-medium">
                       <li class="mb-4">
-                          <a href="https://flowbite.com/" class="hover:underline">Blogs</a>
+                          <Link to="/blogs" class="hover:underline">Blogs</Link>
                       </li>
                       <li>
-                          <a href="https://tailwindcss.com/" class="hover:underline">Reviews</a>
+                          <Link to="/about" class="hover:underline">About us</Link>
                       </li>
                   </ul>
               </div>

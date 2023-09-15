@@ -5,6 +5,7 @@ import { URL } from '../url';
 import { UserContext } from '../../context/UserContext';
 import {Link,Navigate,useNavigate} from 'react-router-dom';
 import axios from 'axios'
+import Footer from '../components/Footer';
 
 function CreatePost() {
 
@@ -116,7 +117,7 @@ function CreatePost() {
           <button className='bg-black w-full md:w-[20%] mx-auto text-white font-semibold px-4 py-2 md:text-xl text-lg'>Create</button>
         </form>
      </div>
-        
+        <Footer></Footer>
     </div>
   )
 }
