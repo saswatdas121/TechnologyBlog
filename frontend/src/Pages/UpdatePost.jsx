@@ -1,13 +1,12 @@
-import {React,useContext,useState} from 'react'
+import {React,useContext,useState,useEffect} from 'react'
 import Navbar from '../components/Navbar';
 import {ImCross} from 'react-icons/im'
 import { URL } from '../url';
 import { UserContext } from '../../context/UserContext';
-import {Link,Navigate,useNavigate} from 'react-router-dom';
+import {Link,Navigate,useNavigate,useParams} from 'react-router-dom';
 import axios from 'axios'
 
-function CreatePost() {
-
+function UpdatePost() {
     const[title,setTitle]=useState();
     const[desc,setDesc]=useState();
     const [file,setFile]=useState();
@@ -15,11 +14,36 @@ function CreatePost() {
     const [categoryArray,setCategoryArray]=useState([]);
     const navigate=useNavigate();
 
+    const postId=useParams().id;
+
     const {user}=useContext(UserContext);
+
+    useEffect(()=>
+    {
+        fetchPosts();
+    },[])
+
+    const fetchPosts=async ()=>
+    {
+        try
+        {
+            const blogData=await axios.get(URL+'/blogs/'+postId);
+
+            console.log(blogData);
+
+            setTitle(blogData.data[0].title);
+            setDesc(blogData.data[0].desc);
+            setFile(blogData.data[0].photo);
+            setCategoryArray(blogData.data[0].categories);
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    }
 
     const blogPost=async(e)=>
     {
-      console.log(user);
       e.preventDefault();
       const post={
         title,
@@ -49,7 +73,7 @@ function CreatePost() {
       }
       console.log(post)
       try{
-        const res=await axios.post(URL+"/create",post,{withCredentials:true})
+        const res=await axios.put(URL+"/update/"+postId,post,{withCredentials:true})
         navigate("/")
         // console.log(res.data)
 
@@ -82,8 +106,9 @@ function CreatePost() {
   return (
     <div>
         <Navbar/>
+        {}
         <div className='px-6 md:px-[200px] mt-8'>
-        <h1 className='font-bold md:text-2xl text-xl ' style={{textAlign:'center'}}>Create you own Blog</h1>
+        <h1 className='font-bold md:text-2xl text-xl ' style={{textAlign:'center'}}>Update your Blog</h1>
         <form className='w-full flex flex-col space-y-4 md:space-y-8 mt-4' method='POST' onSubmit={blogPost}>
           <input value={title} type="text" placeholder='Enter post title' className='px-4 py-2 outline-none' style={{border:'2px solid black'}} onChange={(e)=>setTitle(e.target.value)}/>
           <input onChange={(e)=>setFile(e.target.files[0])} type="file"  className='px-4'/>
@@ -113,7 +138,7 @@ function CreatePost() {
     Write your content
   </label>
 </div>
-          <button className='bg-black w-full md:w-[20%] mx-auto text-white font-semibold px-4 py-2 md:text-xl text-lg'>Create</button>
+          <button className='bg-black w-full md:w-[20%] mx-auto text-white font-semibold px-4 py-2 md:text-xl text-lg'>Update</button>
         </form>
      </div>
         
@@ -121,4 +146,4 @@ function CreatePost() {
   )
 }
 
-export default CreatePost
+export default UpdatePost

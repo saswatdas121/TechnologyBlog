@@ -1,13 +1,14 @@
 import React from 'react'
 import indeximage from './index.png'
 import {Link} from 'react-router-dom'
+import { IF } from '../url'
 
 function Posts({data}) {
   return (
     <div className="w-full flex mt-8 space-x-4">
     {/* left */}
     <div className="w-[35%] h-[200px] flex justify-center items-center">
-    <img src={indeximage} alt="" className="h-full w-full object-cover"/>
+    <img src={IF+data.photo} alt="" className="h-full w-full object-cover"/>
     </div>
     {/* right */}
     <div className="flex flex-col w-[65%]">

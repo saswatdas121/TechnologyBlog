@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar.jsx";
 import Footer from '../components/Footer.jsx'
 import {Link,useNavigate} from 'react-router-dom';
 import axios from 'axios'
-import { URL } from "../url.js";
+import { IF, URL } from "../url.js";
 import Spinner from "../components/Spinner.jsx";
 
 

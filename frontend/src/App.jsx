@@ -10,6 +10,7 @@ import BlogPage from './Pages/BlogPage'
 import CreatePost from './Pages/CreatePost'
 import Profile from './Pages/Profile'
 import { UserContextProvider } from '../context/UserContext'
+import UpdatePost from './Pages/UpdatePost'
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
         <Route exact path="/write" element={<CreatePost/>}></Route>
         <Route exact path="/profile" element={<Profile/>}></Route>
         <Route exact path="/blogs/:id" element={<BlogPage/>}/>
-
+        <Route exact path="/blogs/update/:id" element={<UpdatePost/>}/>
 
       </Routes>
       </UserContextProvider>
