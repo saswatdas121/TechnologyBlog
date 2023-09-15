@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import { URL } from '../url'
+import { IF, URL } from '../url'
 
 function ProfileBlogs({data}) {
   return (
@@ -8,7 +8,7 @@ function ProfileBlogs({data}) {
      <div class="overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200" style={{width:'300px'}}>
   
   <figure>
-    <img src="https://picsum.photos/id/1081/800/600" alt="card image" class="aspect-video w-full" />
+    <img src={IF+data.photo} alt="card image" class="aspect-video w-full" />
   </figure>
   
   <div class="p-6">

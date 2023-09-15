@@ -19,6 +19,10 @@ const BlogSchema=new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'User',  
     },
+    photo:{
+        type:String,
+        required:true,  
+    },
     categories:{
         type:Array,
         

@@ -16,6 +16,8 @@ function Register() {
 
     async function registerUser(e)
     {
+
+        e.preventDefault();
         
         try{
 
@@ -34,8 +36,6 @@ function Register() {
                 }
                );
 
-               
-              
                navigate("/login")
            }
         catch(error)
