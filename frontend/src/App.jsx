@@ -11,6 +11,9 @@ import CreatePost from './Pages/CreatePost'
 import Profile from './Pages/Profile'
 import { UserContextProvider } from '../context/UserContext'
 import UpdatePost from './Pages/UpdatePost'
+import Alert from './components/Alert'
+import TotalBlogs from './Pages/TotalBlogs'
+import About from './Pages/About'
 
 function App() {
   return (
@@ -25,6 +28,9 @@ function App() {
         <Route exact path="/profile" element={<Profile/>}></Route>
         <Route exact path="/blogs/:id" element={<BlogPage/>}/>
         <Route exact path="/blogs/update/:id" element={<UpdatePost/>}/>
+        <Route exact path="/blogs" element={<TotalBlogs/>}/>
+        <Route exact path="/about" element={<About/>}/>
+        
 
       </Routes>
       </UserContextProvider>

@@ -8,6 +8,7 @@ import axios from 'axios';
 import { IF, URL } from '../url';
 import Spinner from '../components/Spinner';
 import { UserContext } from '../../context/UserContext';
+import Alert from '../components/Alert';
 
 
 
@@ -18,6 +19,8 @@ function BlogPage() {
   const postId=useParams().id;
 
   const [blog,setBlog]=useState();
+
+  const [deleteBlog,setDeleteBlog]=useState(false);
 
   useEffect(()=>
   {
@@ -44,15 +47,16 @@ function BlogPage() {
   return (
     <>
     <NavBar/>
+    {deleteBlog && <Alert data={blog._id} setDeleteBlog={setDeleteBlog}/>}
     {!blog?<Spinner/>:(
     <div>
         <div className="px-8 md:px-[200px] mt-8">
         <div className="flex justify-between items-center">
          <h1 className="text-2xl font-bold text-black md:text-3xl">{blog.title}</h1>
-         <div className="flex items-center justify-center space-x-2">
+         {user && <div className="flex items-center justify-center space-x-2">
          {blog.userId._id==user._id && <Link className="cursor-pointer" to={`/blogs/update/${blog._id}`}><BiEdit/></Link>}
-         {blog.userId._id==user._id && <Link className="cursor-pointer" to={`/blogs/update/${blog._id}`}>  <MdDelete/></Link>}
-         </div>
+         {blog.userId._id==user._id && <button className="cursor-pointer" onClick={()=>setDeleteBlog(true)}><MdDelete/></button>}
+         </div>}
         </div>
         <div className="flex items-center justify-between mt-2 md:mt-4">
         <p style={{fontSize:'20px'}}>@{blog.userName}</p>
