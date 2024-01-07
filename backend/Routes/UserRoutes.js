@@ -74,6 +74,11 @@ app.get("/refetch",(req,res)=>
     const token=req.cookies.token;
 
     console.log(token);
+
+    if(!token)
+    {
+      return;
+    }
     
 
     jwt.verify(token,process.env.SECRET,async(err,data)=>

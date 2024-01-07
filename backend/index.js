@@ -17,12 +17,13 @@ app.use(cookieParser());
 
 
 require('dotenv').config({
-    path: 'C:/Users/Shubham/Desktop/blog/vite/config.env'
+    path: '../config.env'
 })//For enviornment variables
 
 app.use(express.json());
 const connectDb=async()=>
 {
+    console.log(process.env.MONGODB_URI);
     try
     {
        const res=await mongoose.connect(process.env.MONGODB_URI,{

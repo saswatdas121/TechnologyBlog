@@ -5,11 +5,9 @@ const verifyToken=(req,res,next)=>
 {
     const token=req.cookies.token;
 
-    console.log(token);
-
     if(!token)
     {
-        return res.status(401).json("Not Authenticatedsssss")
+        return res.status(401).json("Not Authenticated")
     }
 
     jwt.verify(token,process.env.SECRET,async(err,data)=>
